@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   const { systemTheme } = useThemeContext();
 
-  console.log(systemTheme);
+  // console.log(systemTheme);
 
   return (
     // Make with styled components
