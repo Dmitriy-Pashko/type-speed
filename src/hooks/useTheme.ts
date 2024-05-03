@@ -14,8 +14,6 @@ export const useTheme = () => {
     return localTheme ? localTheme : theme.blueDolphin;
   });
 
-  console.log("systemTheme", systemTheme);
-
   const setTheme = useCallback(
     (value: Theme) => {
       setSystemTheme(value);

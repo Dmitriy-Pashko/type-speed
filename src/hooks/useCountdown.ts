@@ -1,9 +1,14 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 
+import { useLocalStorage } from "./useLocalStorage";
+
 // TODO remove semicolon
-export const useCountdown = (initialValue: number, interval = 1000) => {
+export const useCountdown = (interval = 1000) => {
+  const { getLocalStorageValue } = useLocalStorage();
+  const [time, setTime] = useState(() => getLocalStorageValue("time") || 15000);
+
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const [countdown, setCountdown] = useState(initialValue);
+  const [countdown, setCountdown] = useState(time);
 
   const startCountdown = useCallback(() => {
     if (intervalRef.current) return;
@@ -17,17 +22,17 @@ export const useCountdown = (initialValue: number, interval = 1000) => {
         return prev;
       });
     }, interval);
-  }, [initialValue]);
+  }, [time]);
 
   const resetCountdown = useCallback(() => {
     clearInterval(intervalRef.current!);
     intervalRef.current = null;
-    setCountdown(initialValue);
-  }, [initialValue]);
+    setCountdown(time);
+  }, [time]);
 
   useEffect(() => {
     return () => clearInterval(intervalRef.current!);
   }, [interval]);
 
-  return { countdown, startCountdown, resetCountdown };
+  return { time, setTime, countdown, startCountdown, resetCountdown };
 };
