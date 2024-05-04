@@ -4,6 +4,7 @@ import { generateWord } from "../utils";
 
 // Do it with api call? Research text apis
 export const useWord = (numberOfWords: number) => {
+  // What is it, IS it text generation or word typing?
   const [word, setWord] = useState<string>(
     () => generateWord(numberOfWords) + " "
   );

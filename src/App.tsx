@@ -5,12 +5,14 @@ import TimeCategory from "./components/TimeCategory";
 import { useThemeContext } from "./hooks/useTheme";
 import { useCountdown } from "./hooks/useCountdown";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useSystem } from "./hooks/useSystem";
 
 function App() {
   const { systemTheme } = useThemeContext();
 
   const { setLocalStorageValue } = useLocalStorage();
   const { time, setTime } = useCountdown();
+  const { restartTest } = useSystem();
   // console.log(systemTheme);
 
   return (
@@ -33,8 +35,9 @@ function App() {
           setTime={setTime}
           restart={restartTest}
         />
-        {/* <Countdown countdown={countdown} reset={resetCountdown} />
-        <WordWrapper
+        {/* Start from here */}
+        <Countdown countdown={countdown} reset={resetCountdown} />
+        {/* <WordWrapper
           focused={wordContainerFocused}
           setFocused={setWordContainerFocused}
         >

@@ -43,10 +43,11 @@ export const useSystem = () => {
   } = useKeyDown(wordContainerFocused);
   const { modalIsOpen, aboutModal, openModal, closeModal } = useModal();
 
-  // Start from here
   const restartTest = useCallback(() => {
     resetCountdown();
+    // Seems like a bad naming
     updateWord(true);
+    // How this work in depth
     resetCursorPointer();
     resetCharTyped();
     setTypingState("idle");
@@ -114,8 +115,6 @@ export const useSystem = () => {
     word,
     wordContainerFocused,
     setWordContainerFocused,
-    resetCountdown,
-    updateWord,
     restartTest,
     checkCharacter,
     closeModal,
