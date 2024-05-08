@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TimeCategory from "./components/TimeCategory";
+import Countdown from "./components/Countdown";
 
 import { useThemeContext } from "./hooks/useTheme";
 import { useCountdown } from "./hooks/useCountdown";
@@ -13,6 +14,7 @@ function App() {
   const { setLocalStorageValue } = useLocalStorage();
   const { time, setTime } = useCountdown();
   const { restartTest } = useSystem();
+  const { countdown, resetCountdown } = useCountdown();
   // console.log(systemTheme);
 
   return (
@@ -35,16 +37,16 @@ function App() {
           setTime={setTime}
           restart={restartTest}
         />
-        {/* Start from here */}
         <Countdown countdown={countdown} reset={resetCountdown} />
-        {/* <WordWrapper
+        {/* Start from here */}
+        <WordWrapper
           focused={wordContainerFocused}
           setFocused={setWordContainerFocused}
         >
           <WordContainer word={word} />
           <UserTyped word={word} check={checkCharacter} charTyped={charTyped} />
         </WordWrapper>
-        <Restart restart={restartTest} /> */}
+        {/* <Restart restart={restartTest} /> */}
         <Footer />
       </main>
     </div>

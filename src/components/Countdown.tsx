@@ -34,6 +34,7 @@ const Countdown = ({ countdown, reset }: CountdownProps) => {
             color: systemTheme.text.secondary,
           }}
         >
+          {/* Do that with moment? */}
           {formatedCountdown.minutes < 10
             ? `0${formatedCountdown.minutes}`
             : formatedCountdown.minutes}
