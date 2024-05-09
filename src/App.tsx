@@ -2,11 +2,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import TimeCategory from "./components/TimeCategory";
 import Countdown from "./components/Countdown";
+import WordWrapper from "./components/WordWrapper";
 
 import { useThemeContext } from "./hooks/useTheme";
 import { useCountdown } from "./hooks/useCountdown";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useSystem } from "./hooks/useSystem";
+import { useCursorPosition } from "./hooks/useCursorPosition";
 
 function App() {
   const { systemTheme } = useThemeContext();
@@ -15,6 +17,7 @@ function App() {
   const { time, setTime } = useCountdown();
   const { restartTest } = useSystem();
   const { countdown, resetCountdown } = useCountdown();
+  const { wordContainerFocused, setWordContainerFocused } = useCursorPosition();
   // console.log(systemTheme);
 
   return (
@@ -38,11 +41,11 @@ function App() {
           restart={restartTest}
         />
         <Countdown countdown={countdown} reset={resetCountdown} />
-        {/* Start from here */}
         <WordWrapper
           focused={wordContainerFocused}
           setFocused={setWordContainerFocused}
         >
+          {/* Start from here */}
           <WordContainer word={word} />
           <UserTyped word={word} check={checkCharacter} charTyped={charTyped} />
         </WordWrapper>

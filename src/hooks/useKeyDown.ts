@@ -10,8 +10,7 @@ export const useKeyDown = (active: boolean) => {
   const [charTyped, setCharTyped] = useState<string>("");
   const [totalCharacterTyped, setTotalCharacterTyped] = useState<string>("");
 
-  const { cursorPosition, updateCursorPosition, resetCursorPointer } =
-    useCursorPosition();
+  const { cursorPosition, updateCursorPosition } = useCursorPosition();
 
   const handleKeyDown = useCallback(
     ({ key, code }: KeyboardEvent) => {
@@ -59,9 +58,9 @@ export const useKeyDown = (active: boolean) => {
     charTyped,
     totalCharacterTyped,
     setTotalCharacterTyped,
-    cursorPosition,
+
     resetCharTyped,
-    resetCursorPointer,
+
     typingState,
     setTypingState,
   };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export const useCursorPosition = () => {
+  const [wordContainerFocused, setWordContainerFocused] = useState(false);
   const [cursorPosition, setCursorPosition] = useState(0);
 
   const resetCursorPointer = () => setCursorPosition(0);
@@ -10,5 +11,11 @@ export const useCursorPosition = () => {
     else setCursorPosition((cursor) => cursor - 1);
   };
 
-  return { cursorPosition, updateCursorPosition, resetCursorPointer };
+  return {
+    cursorPosition,
+    updateCursorPosition,
+    resetCursorPointer,
+    wordContainerFocused,
+    setWordContainerFocused,
+  };
 };

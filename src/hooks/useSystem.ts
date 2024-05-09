@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 
+import { useCursorPosition } from "./useCursorPosition";
 import { useCountdown } from "./useCountdown";
 import { useKeyDown } from "./useKeyDown";
 import { useModal } from "./useModal";
@@ -27,17 +28,14 @@ export const useSystem = () => {
     typedHistory: "",
   });
 
-  const [wordContainerFocused, setWordContainerFocused] = useState(false);
-
   const { countdown, resetCountdown, startCountdown, time } = useCountdown();
   const { word, updateWord, totalWord } = useWord(30);
+  const { resetCursorPointer, wordContainerFocused } = useCursorPosition();
   const {
     charTyped,
     typingState,
-    cursorPosition,
     totalCharacterTyped,
     resetCharTyped,
-    resetCursorPointer,
     setTotalCharacterTyped,
     setTypingState,
   } = useKeyDown(wordContainerFocused);
@@ -107,14 +105,11 @@ export const useSystem = () => {
   return {
     charTyped,
     countdown,
-    cursorPosition,
     modalIsOpen,
     aboutModal,
     results,
     history,
     word,
-    wordContainerFocused,
-    setWordContainerFocused,
     restartTest,
     checkCharacter,
     closeModal,
