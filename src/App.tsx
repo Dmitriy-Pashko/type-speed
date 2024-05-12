@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import TimeCategory from "./components/TimeCategory";
 import Countdown from "./components/Countdown";
 import WordWrapper from "./components/WordWrapper";
+import WordContainer from "./components/WordContainer";
 
 import { useThemeContext } from "./hooks/useTheme";
 import { useCountdown } from "./hooks/useCountdown";
