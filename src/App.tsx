@@ -10,6 +10,7 @@ import { useCountdown } from "./hooks/useCountdown";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useSystem } from "./hooks/useSystem";
 import { useCursorPosition } from "./hooks/useCursorPosition";
+import { useWord } from "./hooks/useWord";
 
 function App() {
   const { systemTheme } = useThemeContext();
@@ -19,6 +20,8 @@ function App() {
   const { restartTest } = useSystem();
   const { countdown, resetCountdown } = useCountdown();
   const { wordContainerFocused, setWordContainerFocused } = useCursorPosition();
+  // hardcoded number and maybe bad naming
+  const { word } = useWord(30);
   // console.log(systemTheme);
 
   return (
@@ -46,8 +49,8 @@ function App() {
           focused={wordContainerFocused}
           setFocused={setWordContainerFocused}
         >
-          {/* Start from here */}
           <WordContainer word={word} />
+          {/* Start from here */}
           <UserTyped word={word} check={checkCharacter} charTyped={charTyped} />
         </WordWrapper>
         {/* <Restart restart={restartTest} /> */}
