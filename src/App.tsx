@@ -6,6 +6,7 @@ import WordWrapper from "./components/WordWrapper";
 import WordContainer from "./components/WordContainer";
 import UserTyped from "./components/UserTyped";
 
+import { useKeyDown } from "./hooks/useKeyDown";
 import { useThemeContext } from "./hooks/useTheme";
 import { useCountdown } from "./hooks/useCountdown";
 import { useLocalStorage } from "./hooks/useLocalStorage";
@@ -18,11 +19,13 @@ function App() {
 
   const { setLocalStorageValue } = useLocalStorage();
   const { time, setTime } = useCountdown();
-  const { restartTest } = useSystem();
+  const { restartTest, checkCharacter } = useSystem();
   const { countdown, resetCountdown } = useCountdown();
   const { wordContainerFocused, setWordContainerFocused } = useCursorPosition();
   // hardcoded number and maybe bad naming
   const { word } = useWord(30);
+
+  const { charTyped } = useKeyDown(wordContainerFocused);
   // console.log(systemTheme);
 
   return (
@@ -51,9 +54,9 @@ function App() {
           setFocused={setWordContainerFocused}
         >
           <WordContainer word={word} />
-          {/* Start from here */}
           <UserTyped word={word} check={checkCharacter} charTyped={charTyped} />
         </WordWrapper>
+        {/* Start from here */}
         {/* <Restart restart={restartTest} /> */}
         <Footer />
       </main>

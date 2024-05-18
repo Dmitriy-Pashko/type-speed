@@ -39,7 +39,7 @@ export const useSystem = () => {
     setTotalCharacterTyped,
     setTypingState,
   } = useKeyDown(wordContainerFocused);
-  const { modalIsOpen, aboutModal, openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   const restartTest = useCallback(() => {
     resetCountdown();
@@ -105,14 +105,10 @@ export const useSystem = () => {
   return {
     charTyped,
     countdown,
-    modalIsOpen,
-    aboutModal,
     results,
     history,
     word,
     restartTest,
     checkCharacter,
-    closeModal,
-    openModal,
   };
 };
